@@ -18,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::apiResource('events', EventController::class);
-Route::apiResource('events.attendees', AttendeeController::class)->scoped();
+Route::apiResource('events.attendees', AttendeeController::class)->scoped()->except(['update']);
 
