@@ -14,6 +14,11 @@ class AttendeeController extends Controller
   use CanLoadRelationships;
 
   private array $relations = ['user'];
+
+  public function __construct(){
+    $this->middleware('auth:sanctum')->except(['index', 'show', 'update']);
+    $this->authorizeResource(Attendee::class, 'attendee');
+  }
   /**
    * Display a listing of the resource.
    */
@@ -57,8 +62,10 @@ class AttendeeController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $event, Attendee $attendee)
+  public function destroy(Event $event, Attendee $attendee)
   {
+    //Gate method of authorization
+    // $this->authorize('delete-attendee', [$event, $attendee]);
     $attendee->delete();
 
     return response(status:204);
