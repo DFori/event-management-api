@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Notifications\Notifiable;
 
 class Event extends Model
 {
     use HasFactory;
+    use Notifiable;
 
     protected $fillable = ['name', 'description', 'start_time', 'end_time', 'user_id'];
 
